@@ -1,218 +1,491 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Planejamento Estratégico - Silvanio Gois Fictícia Ltda</title>
-  <style>
-    body { font-family: Arial, sans-serif; margin: 0; padding: 0; color: #333; background: #f4f4f4; }
-    header { background-color: #27628d; color: white; padding: 20px; text-align: center; }
-    nav { background-color: #fff; padding: 15px; text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
-    nav a { color: #27628d; margin: 0 15px; text-decoration: none; font-weight: bold; }
-    nav a:hover { text-decoration: underline; }
-    section { padding: 30px; background: white; margin: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.05); }
-    h1, h2, h3 { color: #27628d; }
-    ul { padding-left: 20px; }
-    .swot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-    .swot-block { background: #eaf1f7; padding: 15px; border-radius: 6px; }
-    footer { text-align: center; font-size: 0.9em; color: #666; margin: 30px 0; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planejamento Estratégico - Silvanio Gois Fictícia Ltda</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Variáveis CSS para Cores */
+        :root {
+            --primary-color: #27628d;
+            --secondary-color: #f0a800; /* Um tom de destaque (opcional, mas bom para modernizar) */
+            --light-bg: #f8f8f8;
+            --text-color: #333;
+            --shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        /* RESET e Base */
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--text-color);
+            background: var(--light-bg);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        /* Título Principal */
+        .page-title {
+            background: var(--primary-color);
+            color: white;
+            padding: 20px 20px 10px;
+            text-align: center;
+            margin: 0;
+        }
+
+        .page-title h1 {
+            color: white;
+            font-size: 2em;
+            margin: 0;
+        }
+
+        /* HEADER - Cabeçalho com a Imagem */
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Centraliza o conteúdo (header-content) */
+            text-align: center;
+            box-shadow: var(--shadow);
+            border-bottom: 5px solid var(--secondary-color);
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center; /* Alinha verticalmente imagem e texto */
+            justify-content: center; /* Centraliza o bloco de conteúdo */
+            max-width: 1000px; /* Limita a largura para melhor leitura */
+            width: 100%;
+            gap: 30px; /* Espaço entre a imagem e o texto */
+        }
+
+        .profile-img-container {
+            width: 160px; /* Tamanho ligeiramente maior para a imagem */
+            height: 160px;
+            overflow: hidden;
+            border-radius: 50%;
+            border: 4px solid white;
+            flex-shrink: 0;
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .header-info {
+            text-align: left; /* Alinha o texto à esquerda quando ao lado da imagem */
+            flex-grow: 1; /* Permite que o texto ocupe o espaço restante */
+        }
+
+        .header-info h1 { /* Ajustado para o H1 dentro de header-info */
+            color: white;
+            margin: 0 0 5px 0;
+            font-size: 2em; /* Tamanho proporcional ao título da página */
+        }
+
+        .header-info p {
+            margin: 5px 0;
+            font-size: 1em; /* Tamanho um pouco maior para melhor leitura */
+            opacity: 0.9;
+        }
+
+        /* NAVEGAÇÃO */
+        nav {
+            background-color: white;
+            padding: 10px 20px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        nav a {
+            color: var(--primary-color);
+            margin: 8px 12px;
+            padding: 5px 10px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border-bottom: 2px solid transparent;
+        }
+
+        nav a:hover {
+            color: var(--secondary-color);
+            border-bottom: 2px solid var(--secondary-color);
+        }
+
+        /* SECTIONS */
+        section {
+            padding: 40px 20px;
+            background: white;
+            margin: 20px auto;
+            max-width: 1000px;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+        }
+
+        section h2 {
+            border-bottom: 3px solid var(--secondary-color);
+            padding-bottom: 10px;
+            margin-bottom: 25px;
+        }
+
+        /* SWOT GRID */
+        .swot-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .swot-block {
+            padding: 20px;
+            border-radius: 6px;
+            transition: transform 0.3s;
+            background: var(--light-bg);
+            border: 1px solid #ddd;
+        }
+
+        .swot-block h3 {
+            margin-top: 0;
+            font-size: 1.2em;
+        }
+
+        /* Botão Voltar ao Topo */
+        .back-to-top {
+            text-align: right;
+            margin: -10px 20px 30px auto;
+            max-width: 1000px;
+        }
+
+        .back-to-top a {
+            color: var(--primary-color);
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+
+        .back-to-top a:hover {
+            background: #eee;
+        }
+
+        /* TABELA (Plano de Ação) */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9em;
+        }
+
+        table thead tr {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        table th, table td {
+            padding: 12px 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        table tbody tr:nth-child(even) {
+            background: #f4f4f4;
+        }
+
+        table tbody tr:hover {
+            background: #e9e9e9;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            font-size: 0.85em;
+            color: #666;
+            padding: 30px 0;
+            border-top: 1px solid #ccc;
+            margin-top: 40px;
+        }
+
+        /* RESPONSIVIDADE */
+        @media (max-width: 768px) {
+            .page-title h1 {
+                font-size: 1.6em;
+            }
+
+            header {
+                padding: 30px 10px;
+            }
+
+            .header-content {
+                flex-direction: column; /* Empilha a imagem e o texto em telas pequenas */
+                gap: 15px; /* Reduz o espaçamento */
+            }
+
+            .profile-img-container {
+                width: 120px; /* Imagem menor em mobile */
+                height: 120px;
+            }
+
+            .header-info {
+                text-align: center; /* Centraliza o texto quando empilhado */
+            }
+            .header-info h1 {
+                font-size: 1.8em; /* Ajusta o tamanho do título da empresa em mobile */
+            }
+            .header-info p {
+                font-size: 0.9em; /* Ajusta o tamanho do parágrafo em mobile */
+            }
+
+            nav a {
+                margin: 5px 8px;
+                font-size: 0.85em;
+            }
+
+            section {
+                margin: 10px auto;
+                padding: 20px 15px;
+            }
+
+            .swot-grid {
+                grid-template-columns: 1fr; /* SWOT em coluna única */
+            }
+
+            table th, table td {
+                padding: 8px 5px;
+                font-size: 0.7em; /* Reduz o tamanho da fonte da tabela */
+            }
+        }
+    </style>
 </head>
 <body>
-  <div style="background:#f4f4f4; text-align:center; padding:10px 0;">
-    <h1 style="color:#27628d; margin:0; font-size:28px;">Planejamento Estratégico Empresarial</h1>
-  </div>
 
-  <header>
-    <h1>Silvanio Gois Fictícia Ltda</h1>
-    <p>Elaborador: Silvanio Gois — Técnico em Administração e Edificações | Graduando em Processos Gerenciais<br>
-    Email: sg@silvaniogois.com.br</p>
-  </header>
-
-  <nav>
-    <a href="#sobre">Sobre</a>
-    <a href="#missao">Missão</a>
-    <a href="#visao">Visão</a>
-    <a href="#valores">Valores</a>
-    <a href="#swot">SWOT</a>
-    <a href="#pestel">PESTEL</a>
-    <a href="#objetivos">Objetivos</a>
-    <a href="#kpis">KPIs</a>
-    <a href="#plano">Plano de Ação</a>
-  </nav>
-
-  <section id="sobre">
-    <h2>Sobre a Empresa</h2>
-    <p>A Silvanio Gois Fictícia Ltda é uma empresa de pequeno a médio porte do setor da construção civil, que atua com contratos de prestação de serviços. O foco principal está na execução de 2 a 3 contratos por ano, que variam entre obras de longa duração e serviços de reformas menores. A empresa preza pela qualidade, cumprimento de prazos, segurança e relações éticas com todos os envolvidos.</p>
-  </section>
-  <div style="text-align: right; margin: -10px 30px 30px 0;">
-    <a href="#" style="color:#27628d; font-weight:bold; text-decoration:none;">↑ Voltar ao topo</a>
-  </div>
-
-  <section id="missao">
-    <h2>Missão</h2>
-    <p>Executar obras e serviços com excelência, garantindo segurança, qualidade e compromisso com prazos, sempre respeitando os princípios éticos e as necessidades dos clientes.</p>
-  </section>
-  <div style="text-align: right; margin: -10px 30px 30px 0;">
-    <a href="#" style="color:#27628d; font-weight:bold; text-decoration:none;">↑ Voltar ao topo</a>
-  </div>
-
-  <section id="visao">
-    <h2>Visão</h2>
-    <p>Ser reconhecida como uma empresa referência em construção civil pela confiabilidade, qualidade técnica e relacionamento transparente, conquistando contratos estratégicos de médio e longo prazo.</p>
-  </section>
-  <div style="text-align: right; margin: -10px 30px 30px 0;">
-    <a href="#" style="color:#27628d; font-weight:bold; text-decoration:none;">↑ Voltar ao topo</a>
-  </div>
-
-  <section id="valores">
-    <h2>Valores</h2>
-    <ul>
-      <li><strong>Segurança em primeiro lugar</strong> – Proteção das pessoas e do ambiente em todas as etapas.</li>
-      <li><strong>Qualidade sempre</strong> – Excelência técnica e acabamento garantido.</li>
-      <li><strong>Ética e conduta profissional</strong> – Honestidade e integridade em cada contrato.</li>
-      <li><strong>Comprometimento com prazos</strong> – Planejamento sério e execução com responsabilidade.</li>
-      <li><strong>Respeito às pessoas</strong> – Colaboradores, clientes, fornecedores e comunidade.</li>
-      <li><strong>Responsabilidade socioambiental</strong> – Práticas sustentáveis e respeito ao meio ambiente.</li>
-      <li><strong>Inovação na medida certa</strong> – Soluções técnicas que melhoram a eficiência sem perder a simplicidade.</li>
-      <li><strong>Transparência</strong> – Clareza nas relações e na comunicação com clientes e parceiros.</li>
-      <li><strong>Compromisso com o compliance</strong> – Atuação alinhada às leis, normas e boas práticas de governança, garantindo integridade nos contratos, licitações e relacionamentos.</li>
-    </ul>
-  </section>
-  <div style="text-align: right; margin: -10px 30px 30px 0;">
-    <a href="#" style="color:#27628d; font-weight:bold; text-decoration:none;">↑ Voltar ao topo</a>
-  </div>
-
-  <section id="swot">
-    <h2>Análise SWOT</h2>
-    <div class="swot-grid">
-      <div class="swot-block">
-        <h3>Forças</h3>
-        <ul>
-          <li>Experiência técnica em obras diversas</li>
-          <li>Boa reputação com clientes e fornecedores</li>
-          <li>Flexibilidade para atuar em obras de pequeno, médio e longo porte</li>
-          <li>Gestão enxuta e próxima do cliente</li>
-        </ul>
-      </div>
-      <div class="swot-block">
-        <h3>Fraquezas</h3>
-        <ul>
-          <li>Dependência de poucos contratos por ano</li>
-          <li>Baixa presença digital e marketing restrito</li>
-          <li>Capacidade limitada de expansão rápida</li>
-        </ul>
-      </div>
-      <div class="swot-block">
-        <h3>Oportunidades</h3>
-        <ul>
-          <li>Ampliação de serviços com foco em sustentabilidade</li>
-          <li>Parcerias com construtoras maiores</li>
-          <li>Aumento de licitações e obras públicas</li>
-        </ul>
-      </div>
-      <div class="swot-block">
-        <h3>Ameaças</h3>
-        <ul>
-          <li>Oscilações econômicas e aumento dos custos de insumos</li>
-          <li>Concorrência com empresas de menor preço e menor qualidade</li>
-          <li>Burocracia e lentidão em processos de contratação pública</li>
-        </ul>
-      </div>
+    <div class="page-title">
+        <h1>Planejamento Estratégico Empresarial</h1>
     </div>
-  </section>
-  <div style="text-align: right; margin: -10px 30px 30px 0;">
-    <a href="#" style="color:#27628d; font-weight:bold; text-decoration:none;">↑ Voltar ao topo</a>
-  </div>
 
-  <section id="pestel">
-    <h2>Análise PESTEL</h2>
-    <p>A análise PESTEL permite compreender o macroambiente que influencia a atuação da Silvanio Gois Fictícia Ltda no setor da construção civil.</p>
-    <ul>
-      <li><strong>Político:</strong> Estabilidade em políticas públicas de infraestrutura e programas habitacionais favorecem o setor.</li>
-      <li><strong>Econômico:</strong> Variações no custo de materiais e taxa de juros impactam diretamente nos contratos e investimentos.</li>
-      <li><strong>Sociocultural:</strong> A valorização por construções sustentáveis e seguras está crescendo entre os clientes.</li>
-      <li><strong>Tecnológico:</strong> Avanços em métodos construtivos, softwares de gestão e automação trazem oportunidades de melhoria de eficiência.</li>
-      <li><strong>Ecológico:</strong> A pressão por construções ambientalmente responsáveis exige novas práticas sustentáveis.</li>
-      <li><strong>Legal:</strong> Cumprimento de normas técnicas, legislações trabalhistas e ambientais são obrigatórios e demandam atualização constante.</li>
-    </ul>
-  </section>
-  <div style="text-align: right; margin: -10px 30px 30px 0;">
-    <a href="#" style="color:#27628d; font-weight:bold; text-decoration:none;">↑ Voltar ao topo</a>
-  </div>
+    <header>
+        <div class="header-content">
+            <div class="profile-img-container">
+                <img src="SG_Executivo-removebg-preview.png" alt="Silvanio Gois - Executivo" class="profile-img">
+            </div>
+            <div class="header-info">
+                <h1>Silvanio Gois Fictícia Ltda</h1>
+                <p>Elaborador: Silvanio Gois — Técnico em Administração e Edificações | Graduando em Processos Gerenciais<br>
+                Email: sg@silvaniogois.com.br</p>
+            </div>
+        </div>
+    </header>
 
-  <section id="objetivos">
-    <h2>Objetivos Estratégicos</h2>
-    <ul>
-      <li><strong>Financeiro:</strong> Aumentar o faturamento anual em 25% até 2027, mantendo margens saudáveis.</li>
-      <li><strong>Operacional:</strong> Reduzir o tempo médio de execução das obras em 15% com melhoria de processos.</li>
-      <li><strong>Comercial:</strong> Expandir a atuação para mais duas cidades até o final de 2026.</li>
-      <li><strong>RH:</strong> Implantar programa de capacitação técnica contínua para equipe de obra e gestão até 2026.</li>
-      <li><strong>Sustentabilidade:</strong> Incluir práticas de reuso de materiais e economia de recursos em 100% das obras até 2027.</li>
-    </ul>
-  </section>
-  <div style="text-align: right; margin: -10px 30px 30px 0;">
-    <a href="#" style="color:#27628d; font-weight:bold; text-decoration:none;">↑ Voltar ao topo</a>
-  </div>
+    <nav>
+        <a href="#sobre">Sobre</a>
+        <a href="#missao">Missão</a>
+        <a href="#visao">Visão</a>
+        <a href="#valores">Valores</a>
+        <a href="#swot">SWOT</a>
+        <a href="#pestel">PESTEL</a>
+        <a href="#objetivos">Objetivos</a>
+        <a href="#kpis">KPIs</a>
+        <a href="#plano">Plano de Ação</a>
+    </nav>
 
-  <section id="kpis">
-    <h2>Indicadores Estratégicos (KPIs)</h2>
-    <ul>
-      <li><strong>Margem líquida por contrato (%)</strong></li>
-      <li><strong>Tempo médio de execução das obras (dias)</strong></li>
-      <li><strong>Índice de satisfação dos clientes (0 a 10)</strong></li>
-      <li><strong>Taxa de reincidência de retrabalho (%)</strong></li>
-      <li><strong>Índice de treinamento/hora por colaborador</strong></li>
-      <li><strong>Turnover da equipe técnica</strong></li>
-    </ul>
-  </section>
-  <div style="text-align: right; margin: -10px 30px 30px 0;">
-    <a href="#" style="color:#27628d; font-weight:bold; text-decoration:none;">↑ Voltar ao topo</a>
-  </div>
+    <section id="sobre">
+        <h2>Sobre a Empresa</h2>
+        <p>A Silvanio Gois Fictícia Ltda é uma empresa de pequeno a médio porte do setor da construção civil, que atua com contratos de prestação de serviços. O foco principal está na execução de 2 a 3 contratos por ano, que variam entre obras de longa duração e serviços de reformas menores. A empresa preza pela qualidade, cumprimento de prazos, segurança e relações éticas com todos os envolvidos.</p>
+    </section>
+    <div class="back-to-top"><a href="#">↑ Voltar ao topo</a></div>
 
-  <section id="plano">
-    <h2>Plano de Ação - Modelo 5W2H</h2>
-    <table style="width:100%; border-collapse: collapse;">
-      <thead>
-        <tr style="background:#27628d; color:white;">
-          <th style="padding:8px; border: 1px solid #ccc;">O quê (What)</th>
-          <th style="padding:8px; border: 1px solid #ccc;">Por quê (Why)</th>
-          <th style="padding:8px; border: 1px solid #ccc;">Quem (Who)</th>
-          <th style="padding:8px; border: 1px solid #ccc;">Quando (When)</th>
-          <th style="padding:8px; border: 1px solid #ccc;">Onde (Where)</th>
-          <th style="padding:8px; border: 1px solid #ccc;">Como (How)</th>
-          <th style="padding:8px; border: 1px solid #ccc;">Quanto (How Much)</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td style="padding:8px; border: 1px solid #ccc;">Implantar sistema de gestão de obras</td>
-          <td style="padding:8px; border: 1px solid #ccc;">Melhorar controle e planejamento</td>
-          <td style="padding:8px; border: 1px solid #ccc;">Engenharia/Adm</td>
-          <td style="padding:8px; border: 1px solid #ccc;">Até mar/2026</td>
-          <td style="padding:8px; border: 1px solid #ccc;">Todos os canteiros</td>
-          <td style="padding:8px; border: 1px solid #ccc;">Treinamento + software</td>
-          <td style="padding:8px; border: 1px solid #ccc;">R$ 12.000,00</td>
-        </tr>
-        <tr>
-          <td style="padding:8px; border: 1px solid #ccc;">Capacitar equipe técnica</td>
-          <td style="padding:8px; border: 1px solid #ccc;">Melhorar qualidade e segurança</td>
-          <td style="padding:8px; border: 1px solid #ccc;">RH / Engenheiro</td>
-          <td style="padding:8px; border: 1px solid #ccc;">2026 inteiro</td>
-          <td style="padding:8px; border: 1px solid #ccc;">Obras em andamento</td>
-          <td style="padding:8px; border: 1px solid #ccc;">Cursos técnicos e palestras</td>
-          <td style="padding:8px; border: 1px solid #ccc;">R$ 6.000,00</td>
-        </tr>
-      </tbody>
-    </table>
-  </section>
-  <div style="text-align: right; margin: -10px 30px 30px 0;">
-    <a href="#" style="color:#27628d; font-weight:bold; text-decoration:none;">↑ Voltar ao topo</a>
-  </div>
+    <section id="missao">
+        <h2>Missão</h2>
+        <p>Executar obras e serviços com excelência, garantindo segurança, qualidade e compromisso com prazos, sempre respeitando os princípios éticos e as necessidades dos clientes.</p>
+    </section>
+    <div class="back-to-top"><a href="#">↑ Voltar ao topo</a></div>
 
-  <footer>
-    <p>&copy; 2025 Silvanio Gois Fictícia Ltda. — Todos os direitos reservados.</p>
-  </footer>
+    <section id="visao">
+        <h2>Visão</h2>
+        <p>Ser reconhecida como uma empresa referência em construção civil pela confiabilidade, qualidade técnica e relacionamento transparente, conquistando contratos estratégicos de médio e longo prazo.</p>
+    </p>
+    </section>
+    <div class="back-to-top"><a href="#">↑ Voltar ao topo</a></div>
+
+    <section id="valores">
+        <h2>Valores</h2>
+        <ul>
+            <li><strong>Segurança em primeiro lugar</strong> – Proteção das pessoas e do ambiente em todas as etapas.</li>
+            <li><strong>Qualidade sempre</strong> – Excelência técnica e acabamento garantido.</li>
+            <li><strong>Ética e conduta profissional</strong> – Honestidade e integridade em cada contrato.</li>
+            <li><strong>Comprometimento com prazos</strong> – Planejamento sério e execução com responsabilidade.</li>
+            <li><strong>Respeito às pessoas</strong> – Colaboradores, clientes, fornecedores e comunidade.</li>
+            <li><strong>Responsabilidade socioambiental</strong> – Práticas sustentáveis e respeito ao meio ambiente.</li>
+            <li><strong>Inovação na medida certa</strong> – Soluções técnicas que melhoram a eficiência sem perder a simplicidade.</li>
+            <li><strong>Transparência</strong> – Clareza nas relações e na comunicação com clientes e parceiros.</li>
+            <li><strong>Compromisso com o compliance</strong> – Atuação alinhada às leis, normas e boas práticas de governança, garantindo integridade nos contratos, licitações e relacionamentos.</li>
+        </ul>
+    </section>
+    <div class="back-to-top"><a href="#">↑ Voltar ao topo</a></div>
+
+    <section id="swot">
+        <h2>Análise SWOT</h2>
+        <div class="swot-grid">
+            <div class="swot-block">
+                <h3>Forças</h3>
+                <ul>
+                    <li>Experiência técnica em obras diversas</li>
+                    <li>Boa reputação com clientes e fornecedores</li>
+                    <li>Flexibilidade para atuar em obras de pequeno, médio e longo porte</li>
+                    <li>Gestão enxuta e próxima do cliente</li>
+                </ul>
+            </div>
+            <div class="swot-block">
+                <h3>Fraquezas</h3>
+                <ul>
+                    <li>Dependência de poucos contratos por ano</li>
+                    <li>Baixa presença digital e marketing restrito</li>
+                    <li>Capacidade limitada de expansão rápida</li>
+                </ul>
+            </div>
+            <div class="swot-block">
+                <h3>Oportunidades</h3>
+                <ul>
+                    <li>Ampliação de serviços com foco em sustentabilidade</li>
+                    <li>Parcerias com construtoras maiores</li>
+                    <li>Aumento de licitações e obras públicas</li>
+                </ul>
+            </div>
+            <div class="swot-block">
+                <h3>Ameaças</h3>
+                <ul>
+                    <li>Oscilações econômicas e aumento dos custos de insumos</li>
+                    <li>Concorrência com empresas de menor preço e menor qualidade</li>
+                    <li>Burocracia e lentidão em processos de contratação pública</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <div class="back-to-top"><a href="#">↑ Voltar ao topo</a></div>
+
+    <section id="pestel">
+        <h2>Análise PESTEL</h2>
+        <p>A análise PESTEL permite compreender o macroambiente que influencia a atuação da Silvanio Gois Fictícia Ltda no setor da construção civil.</p>
+        <ul>
+            <li><strong>Político:</strong> Estabilidade em políticas públicas de infraestrutura e programas habitacionais favorecem o setor.</li>
+            <li><strong>Econômico:</strong> Variações no custo de materiais e taxa de juros impactam diretamente nos contratos e investimentos.</li>
+            <li><strong>Sociocultural:</strong> A valorização por construções sustentáveis e seguras está crescendo entre os clientes.</li>
+            <li><strong>Tecnológico:</strong> Avanços em métodos construtivos, softwares de gestão e automação trazem oportunidades de melhoria de eficiência.</li>
+            <li><strong>Ecológico:</strong> A pressão por construções ambientalmente responsáveis exige novas práticas sustentáveis.</li>
+            <li><strong>Legal:</strong> Cumprimento de normas técnicas, legislações trabalhistas e ambientais são obrigatórios e demandam atualização constante.</li>
+        </ul>
+    </section>
+    <div class="back-to-top"><a href="#">↑ Voltar ao topo</a></div>
+
+    <section id="objetivos">
+        <h2>Objetivos Estratégicos</h2>
+        <ul>
+            <li><strong>Financeiro:</strong> Aumentar o faturamento anual em 25% até 2027, mantendo margens saudáveis.</li>
+            <li><strong>Operacional:</strong> Reduzir o tempo médio de execução das obras em 15% com melhoria de processos.</li>
+            <li><strong>Comercial:</strong> Expandir a atuação para mais duas cidades até o final de 2026.</li>
+            <li><strong>RH:</strong> Implantar programa de capacitação técnica contínua para equipe de obra e gestão até 2026.</li>
+            <li><strong>Sustentabilidade:</strong> Incluir práticas de reuso de materiais e economia de recursos em 100% das obras até 2027.</li>
+        </ul>
+    </section>
+    <div class="back-to-top"><a href="#">↑ Voltar ao topo</a></div>
+
+    <section id="kpis">
+        <h2>Indicadores Estratégicos (KPIs)</h2>
+        <ul>
+            <li><strong>Margem líquida por contrato (%)</strong></li>
+            <li><strong>Tempo médio de execução das obras (dias)</strong></li>
+            <li><strong>Índice de satisfação dos clientes (0 a 10)</strong></li>
+            <li><strong>Taxa de reincidência de retrabalho (%)</strong></li>
+            <li><strong>Índice de treinamento/hora por colaborador</strong></li>
+            <li><strong>Turnover da equipe técnica</strong></li>
+        </ul>
+    </section>
+    <div class="back-to-top"><a href="#">↑ Voltar ao topo</a></div>
+
+    <section id="plano">
+        <h2>Plano de Ação - Modelo 5W2H</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>O quê (What)</th>
+                    <th>Por quê (Why)</th>
+                    <th>Quem (Who)</th>
+                    <th>Quando (When)</th>
+                    <th>Onde (Where)</th>
+                    <th>Como (How)</th>
+                    <th>Quanto (How Much)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Revisão e padronização da estrutura de custos/precificação</td>
+                    <td>Garantir margens saudáveis e atingir o objetivo financeiro.</td>
+                    <td>Administração/Financeiro</td>
+                    <td>1º trimestre 2026</td>
+                    <td>Escritório</td>
+                    <td>Criação de planilha detalhada de custos diretos e indiretos (BDI) por tipo de serviço.</td>
+                    <td>R$ 500,00 (Consultoria em software/planilhas)</td>
+                </tr>
+                <tr>
+                    <td>Implantar sistema de gestão de obras</td>
+                    <td>Melhorar controle e planejamento, reduzindo o tempo de execução.</td>
+                    <td>Engenharia/Adm</td>
+                    <td>Até mar/2026</td>
+                    <td>Todos os canteiros</td>
+                    <td>Treinamento da equipe + aquisição de software específico.</td>
+                    <td>R$ 12.000,00</td>
+                </tr>
+                <tr>
+                    <td>Capacitar equipe técnica</td>
+                    <td>Melhorar qualidade, segurança e reduzir retrabalho.</td>
+                    <td>RH / Engenheiro</td>
+                    <td>2026 inteiro</td>
+                    <td>Obras em andamento</td>
+                    <td>Cursos técnicos e palestras focadas em novas normas.</td>
+                    <td>R$ 6.000,00</td>
+                </tr>
+                <tr>
+                    <td>Mapear e prospectar 2 novas cidades-alvo</td>
+                    <td>Atingir o objetivo de expansão comercial até 2026.</td>
+                    <td>Comercial/Adm</td>
+                    <td>2º semestre 2026</td>
+                    <td>Região metropolitana adjacente</td>
+                    <td>Estudo de mercado (demanda/concorrência) e visitas prospectivas.</td>
+                    <td>R$ 3.500,00 (Custos de viagem/pesquisa)</td>
+                </tr>
+                <tr>
+                    <td>Desenvolver e implementar Manual de Boas Práticas Sustentáveis</td>
+                    <td>Cumprir o objetivo de sustentabilidade em 100% das obras.</td>
+                    <td>Engenharia/Obras</td>
+                    <td>1º semestre 2027</td>
+                    <td>Obras novas</td>
+                    <td>Definir protocolos para separação, reuso de água e destinação correta de resíduos.</td>
+                    <td>R$ 2.000,00 (Elaboração do manual e treinamento)</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+    <div class="back-to-top"><a href="#">↑ Voltar ao topo</a></div>
+
+    <footer>
+        <p>&copy; 2025 Silvanio Gois Fictícia Ltda. — Todos os direitos reservados.</p>
+    </footer>
 
 </body>
 </html>
